@@ -1,0 +1,36 @@
+<!--
+  Generated template for the MysqlPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="!isSearchOpened">MySQL Module</ion-title>
+    <ion-searchbar *ngIf="isSearchOpened" showCancelButton="true" (ionInput)="onInput($event)"  (ionCancel)="isSearchOpened=false"> </ion-searchbar>
+    <ion-buttons end >
+    	<button ion-button icon-only *ngIf="!isSearchOpened" (click)="isSearchOpened=true">
+    		<ion-icon name="search"></ion-icon>
+    	</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<button (click)="btnAddClicked()" ion-button>Add DB HTTP</button>
+	<button (click)="btnGetClicked()" ion-button>Get HTTP</button>
+	<button (click)="btnSaveClicked()" ion-button>Save HTTP Result to DB</button>
+	<button (click)="btnLoadClicked()" ion-button>Load HTTP Result to DB</button>
+	<button (click)="clearResultClicked()" ion-button>Clear DB + Result</button>
+
+	<ion-list>
+	    <ion-item *ngFor="let itemResult of result; let i = index"  >
+	      {{itemResult.value}}
+	      <button ion-button color="secondary" item-right (click)="update(i)">Update</button>
+	      <button ion-button color="danger" item-right (click)="delete(i)">Delete</button>
+	    </ion-item>
+	 </ion-list>
+</ion-content>

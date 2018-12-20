@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ApprovalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Approval Module</ion-title>
+  </ion-navbar>
+	<button ion-button color="secondary" item-right (click)="badge.set(10)">Set 10</button>
+	<button ion-button color="secondary" item-right (click)="badge.clear()">Clear</button>
+</ion-header>
+
+	
+<ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+	    <ion-refresher-content pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+	  </ion-refresher>
+
+	<ion-list>
+	  <ion-list-header>
+	    SSN Pengajuan Harga
+	  </ion-list-header>
+	   <ion-item *ngFor="let itemResult of result; let i = index"  >
+	      {{itemResult.id}}
+	      <button ion-button color="secondary" item-right (click)="approve(i)">Approve</button>
+	      <button ion-button color="danger" item-right (click)="reject(i)">Reject</button>
+	    </ion-item>
+	</ion-list>
+
+	<ion-list>
+	  <ion-list-header>
+	    SPOB GGP (SAP)
+	  </ion-list-header>
+	   <ion-item *ngFor="let itemResult of result; let i = index"  >
+	      {{itemResult.id}}
+	      <button ion-button color="secondary" item-right (click)="approve(i)">Approve</button>
+	      <button ion-button color="danger" item-right (click)="reject(i)">Reject</button>
+	    </ion-item>
+	</ion-list>
+	<ion-list>
+	  <ion-list-header>
+	    SPOB Non GGP 
+	  </ion-list-header>
+	   <ion-item *ngFor="let itemResult of result; let i = index"  >
+	      {{itemResult.id}}
+	      <button ion-button color="secondary" item-right (click)="approve(i)">Approve</button>
+	      <button ion-button color="danger" item-right (click)="reject(i)">Reject</button>
+	    </ion-item>
+	</ion-list>
+
+	<ion-list>
+		 <ion-list-header>
+		    Test List Infinite
+		  </ion-list-header>	
+   		<ion-item *ngFor="let i of items">{{i}}</ion-item>
+	 </ion-list>
+
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+	  <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+	 </ion-infinite-scroll>
+
+	
+</ion-content>
